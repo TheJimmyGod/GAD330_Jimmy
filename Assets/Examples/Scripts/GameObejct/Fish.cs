@@ -6,11 +6,13 @@ using UnityEngine.EventSystems;
 
 public class Fish : MonoBehaviour, IPointerClickHandler
 {
+    private enum Fish_Type { Big, Small }
+
     public GameObject Avatar;
+    public GameObject Spawner;
 
     public UnityEvent OnClick;
     private float _Angle = 0.0f;
-    [SerializeField]
     private float _Speed = 0.75f;
     private Vector3 _Velocity = Vector3.zero;
     private Rigidbody _Rigidbody;
@@ -25,20 +27,31 @@ public class Fish : MonoBehaviour, IPointerClickHandler
     void Start()
     {
         isCaptured = false;
+        isPulling = false;
         _Rigidbody = GetComponent<Rigidbody>();
+        Avatar = GameObject.Find("Examples").gameObject;
+    }
+
+    public Fish Initialize(GameObject spawner)
+    {
+        Spawner = spawner.gameObject;
+        float randomNumber = Random.Range(4.0f, 10.0f);
+        _Velocity.y = randomNumber;
+        transform.position = new Vector3(transform.position.x, randomNumber, transform.position.z);
+        _Speed = Random.Range(1.5f, 3.5f);
+        OnClick.AddListener(() => GameManager.Instance.ShootLure());
+        return this;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Avatar = GameObject.Find("Examples");
         if(!isPulling)
         {
             if (!isCaptured)
             {
                 _Angle += ((_Speed * Mathf.PI) / 100.0f) * Time.deltaTime;
                 _Velocity.x = Mathf.Cos(_Angle) * _Radius;
-                _Velocity.y = 5.0f;
                 _Velocity.z = Mathf.Sin(_Angle) * _Radius;
                 _Rigidbody.MovePosition(_Velocity + transform.forward * Time.deltaTime);
                 transform.LookAt(transform.position + _Velocity);
@@ -46,6 +59,7 @@ public class Fish : MonoBehaviour, IPointerClickHandler
             else
             {
                 isPulling = true;
+                this.gameObject.GetComponent<BoxCollider>().enabled = false;
                 StartCoroutine(pull());
             }
         }
@@ -73,9 +87,15 @@ public class Fish : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    private void OnDestroy()
+    {
+        Spawner.GetComponent<Spawner>()._activeFishes.Remove(this.gameObject);
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        Avatar.GetComponent<Liminal.Examples.Examples>().Target = this.transform;
+        if (GameManager.Instance == null) return;
+        GameManager.Instance.Target = this.transform;
         OnClick.Invoke();
     }
 }

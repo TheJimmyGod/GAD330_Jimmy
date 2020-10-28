@@ -12,8 +12,7 @@ namespace Liminal.Examples
     public class Examples : MonoBehaviour
     {
         public Transform Cube;
-        public Transform Target;
-        public GameObject lure;
+
 
         private void Update()
         {
@@ -76,15 +75,6 @@ namespace Liminal.Examples
         public void ChangeCubeSize()
         {
             Cube.localScale = Vector3.one * Random.Range(0.1f, 0.35F);
-        }
-
-        public void ShootLure()
-        {
-            GameObject bullet = Instantiate(lure, new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z), Quaternion.identity);
-            bullet.GetComponent<Lure>()._isUsed = true;
-            Vector3 direction = Target.transform.position - bullet.transform.position;
-            Rigidbody _Rigidbody = bullet.GetComponent<Rigidbody>();
-            _Rigidbody.AddForce(direction * 2.0f, ForceMode.Impulse);
         }
     }
 }
