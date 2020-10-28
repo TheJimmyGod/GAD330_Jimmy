@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1665267669093006830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5, y: 5, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 1, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -105,9 +105,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49463e3ea97f3b64fbcddda62c5bf7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Avatar: {fileID: 0}
+  Spawner: {fileID: 0}
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   _Speed: 1.2566371
   _Radius: 5
   isCaptured: 0
+  isPulling: 0
 --- !u!54 &1665267669093006804
 Rigidbody:
   m_ObjectHideFlags: 0
