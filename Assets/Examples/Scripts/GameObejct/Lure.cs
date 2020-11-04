@@ -7,6 +7,7 @@ public class Lure : MonoBehaviour
 {
     private GameObject Avatar;
     private GameObject CapturedFish;
+
     private float _Speed = 5.0f;
     private Rigidbody _Rigidbody;
     
