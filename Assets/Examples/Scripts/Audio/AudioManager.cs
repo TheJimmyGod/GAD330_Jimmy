@@ -5,12 +5,21 @@ using System.Collections;
 //test
 public class AudioManager : MonoBehaviour
 {
+    private static AudioManager _instance;
+
+    public static AudioManager Instance { get { return _instance; } }
+
     public AudioMixer audioMixer;
     public AudioSource musicSource;
     public AudioSource sfxSource;
 
     private void Awake()
     {
+        if (_instance != null && _instance != this)
+            Destroy(this.gameObject);
+        else
+            _instance = this;
+
         // Loop the background music
         musicSource.loop = true;
     }

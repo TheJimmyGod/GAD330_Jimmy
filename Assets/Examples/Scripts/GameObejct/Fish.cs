@@ -29,6 +29,7 @@ public class Fish : MonoBehaviour, IPointerClickHandler
         isCaptured = false;
         isPulling = false;
         _Rigidbody = GetComponent<Rigidbody>();
+        _Rigidbody.velocity = Vector3.zero;
         Avatar = GameObject.Find("Examples").gameObject;
     }
 
@@ -59,6 +60,7 @@ public class Fish : MonoBehaviour, IPointerClickHandler
             else
             {
                 isPulling = true;
+                _Rigidbody.velocity = Vector3.zero;
                 this.gameObject.GetComponent<BoxCollider>().enabled = false;
                 StartCoroutine(pull());
             }
@@ -89,7 +91,8 @@ public class Fish : MonoBehaviour, IPointerClickHandler
 
     private void OnDestroy()
     {
-        Spawner.GetComponent<Spawner>()._activeFishes.Remove(this.gameObject);
+        if(this.gameObject.activeSelf)
+            Spawner.GetComponent<Spawner>()._activeFishes.Remove(this.gameObject);
     }
 
     public void OnPointerClick(PointerEventData eventData)
