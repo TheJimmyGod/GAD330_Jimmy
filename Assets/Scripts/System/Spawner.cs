@@ -57,6 +57,8 @@ public class Spawner : MonoBehaviour
             GameObject fishObject = Instantiate(fish, new Vector3(5.0f, 0.0f, 0.0f), Quaternion.identity);
             fishObject.GetComponent<Fish>().Initialize(this.gameObject);
             _activeFishes.Add(fishObject);
+            if (_activeFishes.Count > 6)
+                break;
         }
     }
 
@@ -70,6 +72,6 @@ public class Spawner : MonoBehaviour
     {
         Gizmos.color = gizmoColor;
 
-        Gizmos.DrawSphere(gameObject.transform.position, 1.0f);
+        Gizmos.DrawSphere(gameObject.transform.position, 0.5f);
     }
 }
