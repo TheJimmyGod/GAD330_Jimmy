@@ -112,7 +112,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _Speed: 1.2566371
   _Radius: 5
   isCaptured: 0
   isPulling: 0
