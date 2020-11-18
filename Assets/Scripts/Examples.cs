@@ -17,6 +17,7 @@ namespace Liminal.Examples
         private void Update()
         {
             var avatar = VRAvatar.Active;
+            
             if (avatar == null)
                 return;
 

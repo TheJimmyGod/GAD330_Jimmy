@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Lure : MonoBehaviour
 {
+    private static Lure _instance;
+
+    public static Lure Instance { get { return _instance; } }
+
     private GameObject Avatar;
     private GameObject CapturedFish;
 
@@ -18,10 +22,20 @@ public class Lure : MonoBehaviour
     private float _CurrentTimer = 0.0f;
     public bool _isUsed = false;
     public bool Captured = false;
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+            Destroy(this.gameObject);
+        else
+            _instance = this;
+
+    }
+
     void Start()
     {
         _Rigidbody = GetComponent<Rigidbody>();
-        Avatar = GameObject.FindGameObjectWithTag("Avatar");
+        Avatar = GameObject.FindGameObjectWithTag("Avatar").gameObject;
         transform.position = new Vector3(Avatar.transform.position.x, 1.0f, Avatar.transform.position.z);
         Captured = false;
     }
@@ -47,6 +61,23 @@ public class Lure : MonoBehaviour
                 return;
             }
         }
+        else
+        {
+            if (Captured)
+            {
+                if (Vector3.Distance(Avatar.transform.position, transform.position) < 2.0f)
+                {
+                    Captured = false;
+                    _Rigidbody.velocity = Vector3.zero;
+                    GameObject EndofLine = FishingRod.Instance.line.transform.Find("Reset").gameObject;
+                    transform.position = new Vector3(EndofLine.gameObject.transform.position.x, 
+                        EndofLine.gameObject.transform.position.y, 
+                        EndofLine.gameObject.transform.position.z);
+                    transform.LookAt(Vector3.forward);
+                }
+            }
+        }
+
     }
 
     private IEnumerator Capturing()
@@ -60,6 +91,5 @@ public class Lure : MonoBehaviour
         Vector3 direction = Avatar.transform.position - transform.position;
         _Rigidbody.AddForce(direction * 1.0f, ForceMode.Impulse);
         _isUsed = false;
-        Destroy(this.gameObject, 2.0f);
     }
 }

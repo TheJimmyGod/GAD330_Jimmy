@@ -24,10 +24,9 @@ public class GameManager : MonoBehaviour
 
     public void ShootLure()
     {
-        GameObject bullet = Instantiate(lure, new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z), Quaternion.identity);
-        bullet.GetComponent<Lure>()._isUsed = true;
-        Vector3 direction = Target.transform.position - bullet.transform.position;
-        Rigidbody _Rigidbody = bullet.GetComponent<Rigidbody>();
+        Lure.Instance._isUsed = true;
+        Vector3 direction = Target.transform.position - Lure.Instance.transform.position;
+        Rigidbody _Rigidbody = Lure.Instance.GetComponent<Rigidbody>();
 
         _Rigidbody.AddForce(direction * Speed, ForceMode.Impulse);
     }
