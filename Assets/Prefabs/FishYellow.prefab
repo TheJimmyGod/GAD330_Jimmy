@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1665267669093006804}
   - component: {fileID: -2544288622339984580}
   m_Layer: 0
-  m_Name: Fish
+  m_Name: FishYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,5 +142,5 @@ Halo:
   m_Enabled: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4278253567
-  m_Size: 0.5
+    rgba: 4283353087
+  m_Size: 0.35
