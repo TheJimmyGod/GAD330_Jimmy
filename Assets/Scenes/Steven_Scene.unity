@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.19026652, g: 0.23149636, b: 0.19880864, a: 1}
+  m_IndirectSpecularColor: {r: 0.19086647, g: 0.23209178, b: 0.1995056, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -427,8 +427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8066ed3b2e9e4c64f9c11142d910e9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EmulatorDevice: 1
-  m_BuildDevice: 2
+  BuildType: 0
+  EditorType: 0
 --- !u!114 &163395152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,6 +453,7 @@ MonoBehaviour:
   LimappConfig:
     SavedProfile: {fileID: 0}
     ProfileToApply: {fileID: 0}
+    OverrideProfile: 0
 --- !u!4 &163395153
 Transform:
   m_ObjectHideFlags: 0
@@ -751,6 +752,7 @@ MonoBehaviour:
   m_FadeOnStart: 1
   m_StartColor: {r: 0, g: 0, b: 0, a: 1}
   m_CurrentColor: {r: 0, g: 0, b: 0, a: 0}
+  CustomFaderMaterial: {fileID: 0}
 --- !u!20 &681945659
 Camera:
   m_ObjectHideFlags: 0
@@ -867,7 +869,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 2.1894817, y: 3.6661646e+18, z: -2.535282e-23, w: 0.000000038466258}
+  m_BoundingSphereOverride: {x: 0, y: 5.5e-43, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1011,6 +1013,7 @@ MonoBehaviour:
   m_FadeOnStart: 1
   m_StartColor: {r: 0, g: 0, b: 0, a: 1}
   m_CurrentColor: {r: 0, g: 0, b: 0, a: 0}
+  CustomFaderMaterial: {fileID: 0}
 --- !u!20 &754146996
 Camera:
   m_ObjectHideFlags: 0
@@ -1445,6 +1448,7 @@ MonoBehaviour:
   m_FadeOnStart: 1
   m_StartColor: {r: 0, g: 0, b: 0, a: 1}
   m_CurrentColor: {r: 0, g: 0, b: 0, a: 0}
+  CustomFaderMaterial: {fileID: 0}
 --- !u!20 &845894756
 Camera:
   m_ObjectHideFlags: 0
@@ -1575,6 +1579,9 @@ MonoBehaviour:
   m_Script: {fileID: 1676603646, guid: 1661fa78af9aece459a3302206a05902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteractableLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &1201974181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3491,6 +3498,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fishing Rod
       objectReference: {fileID: 0}
+    - target: {fileID: 3080112489522653112, guid: db03a168e2351944a965f0e2fff56418,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lure
+      objectReference: {fileID: 0}
     - target: {fileID: 4158320086875648199, guid: db03a168e2351944a965f0e2fff56418,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3499,7 +3511,7 @@ PrefabInstance:
     - target: {fileID: 4158320086875648199, guid: db03a168e2351944a965f0e2fff56418,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4158320086875648199, guid: db03a168e2351944a965f0e2fff56418,
         type: 3}
@@ -3545,11 +3557,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080112489522653112, guid: db03a168e2351944a965f0e2fff56418,
-        type: 3}
-      propertyPath: m_TagString
-      value: Lure
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db03a168e2351944a965f0e2fff56418, type: 3}

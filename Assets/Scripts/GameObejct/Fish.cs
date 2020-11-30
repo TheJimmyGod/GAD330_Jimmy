@@ -30,13 +30,19 @@ public class Fish : MonoBehaviour, IPointerClickHandler
         isPulling = false;
         _Rigidbody = GetComponent<Rigidbody>();
         _Rigidbody.velocity = Vector3.zero;
-        Avatar = GameObject.Find("Examples").gameObject;
+        Avatar = GameObject.FindGameObjectWithTag("Avatar").gameObject;
+
+        foreach (GameObject fish in GameObject.FindGameObjectsWithTag("Fish"))
+        {
+            Physics.IgnoreCollision(fish.GetComponent<Collider>(), GetComponent<Collider>());
+        }
+
     }
 
     public Fish Initialize(GameObject spawner)
     {
         Spawner = spawner.gameObject;
-        float randomNumber = Random.Range(1.0f, 3.0f);
+        float randomNumber = Random.Range(0.2f, 2.0f);
         _Velocity.y = randomNumber;
         transform.position = new Vector3(transform.position.x, randomNumber, transform.position.z);
         _Speed = Random.Range(1.5f, 3.5f);
