@@ -7,6 +7,10 @@
     "com.unity.purchasing": "2.0.6",
     "com.unity.textmeshpro": "2.0.1",
     "com.unity.timeline": "1.0.0",
+    "com.unity.xr.googlevr.android": "1.18.4",
+    "com.unity.xr.oculus.android": "1.38.6",
+    "com.unity.xr.oculus.standalone": "1.38.4",
+    "com.unity.xr.openvr.standalone": "1.0.5",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
     "com.unity.modules.assetbundle": "1.0.0",
@@ -40,7 +44,7 @@
   },
   "lock": {
     "com.liminal.sdk": {
-      "hash": "605c8ff12315ad9c62aef1b95f2ba876c3bbebc6",
+      "hash": "fe0ef0792be53d61326d77d142954a32357d4449",
       "revision": "HEAD"
     }
   }
