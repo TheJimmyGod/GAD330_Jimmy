@@ -42,7 +42,7 @@ public class Fish : MonoBehaviour, IPointerClickHandler
     public Fish Initialize(GameObject spawner)
     {
         Spawner = spawner.gameObject;
-        float randomNumber = Random.Range(0.2f, 2.0f);
+        float randomNumber = Random.Range(-1.0f, 1.0f);
         _Velocity.y = randomNumber;
         transform.position = new Vector3(transform.position.x, randomNumber, transform.position.z);
         _Speed = Random.Range(1.5f, 3.5f);
