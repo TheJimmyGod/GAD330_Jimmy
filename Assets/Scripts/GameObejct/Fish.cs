@@ -11,6 +11,10 @@ public class Fish : MonoBehaviour, IPointerClickHandler
     public GameObject Avatar;
     public GameObject Spawner;
 
+    public GameObject Effect;
+    public AudioClip capture;
+    public AudioClip reel;
+
     public UnityEvent OnClick;
     private float _Angle = 0.0f;
     private float _Speed = 0.75f;
@@ -21,11 +25,13 @@ public class Fish : MonoBehaviour, IPointerClickHandler
 
     public bool isCaptured = false;
     public bool isPulling = false;
+    private bool left = false;
     
     
     // Start is called before the first frame update
     void Start()
     {
+        Effect.SetActive(false);
         isCaptured = false;
         isPulling = false;
         _Rigidbody = GetComponent<Rigidbody>();
@@ -46,6 +52,9 @@ public class Fish : MonoBehaviour, IPointerClickHandler
         _Velocity.y = randomNumber;
         transform.position = new Vector3(transform.position.x, randomNumber, transform.position.z);
         _Speed = Random.Range(1.5f, 3.5f);
+
+        if (randomNumber >= 0.0f) left = true;
+        
         OnClick.AddListener(() => GameManager.Instance.ShootLure());
         return this;
     }
@@ -57,14 +66,29 @@ public class Fish : MonoBehaviour, IPointerClickHandler
         {
             if (!isCaptured)
             {
-                _Angle += ((_Speed * Mathf.PI) / 100.0f) * Time.deltaTime;
-                _Velocity.x = Mathf.Cos(_Angle) * _Radius;
-                _Velocity.z = Mathf.Sin(_Angle) * _Radius;
-                _Rigidbody.MovePosition(_Velocity + transform.forward * Time.deltaTime);
-                transform.LookAt(transform.position + _Velocity);
+                if(left)
+                {
+                    _Angle += ((_Speed * Mathf.PI) / 100.0f) * Time.deltaTime;
+                    _Velocity.x = Mathf.Cos(_Angle) * _Radius;
+                    _Velocity.z = Mathf.Sin(_Angle) * _Radius;
+                    _Rigidbody.MovePosition(_Velocity + transform.forward * Time.deltaTime);
+                    transform.LookAt(transform.position + _Velocity);
+                }
+                else
+                {
+                    _Angle -= ((_Speed * Mathf.PI) / 100.0f) * Time.deltaTime;
+                    _Velocity.x = Mathf.Cos(_Angle) * _Radius;
+                    _Velocity.z = Mathf.Sin(_Angle) * _Radius;
+                    _Rigidbody.MovePosition(_Velocity + transform.forward * Time.deltaTime);
+                    transform.LookAt(transform.position + _Velocity);
+                }
+
             }
             else
             {
+                AudioManager.Instance.PlaySfx(capture);
+                Effect.SetActive(true);
+                Effect.gameObject.GetComponent<ParticleSystem>().Play();
                 isPulling = true;
                 _Rigidbody.velocity = Vector3.zero;
                 this.gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -81,6 +105,7 @@ public class Fish : MonoBehaviour, IPointerClickHandler
     private IEnumerator pull()
     {
         yield return new WaitForSeconds(1.0f);
+        AudioManager.Instance.PlaySfx(reel);
         Vector3 Direction = Avatar.transform.position - transform.position;
         _Rigidbody.AddForce(Direction * 1.0f, ForceMode.Impulse);
 

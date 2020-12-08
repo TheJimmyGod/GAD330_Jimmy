@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return _instance; } }
     
     public Transform Target;
+
+    public AudioClip Shoot;
+
+    public GameObject TargetInteraction;
     public GameObject lure;
     [Tooltip("Speed for throwing a Lure")]
     [SerializeField] private float Speed = 2.0f;
@@ -24,10 +28,16 @@ public class GameManager : MonoBehaviour
 
     public void ShootLure()
     {
+        AudioManager.Instance.PlaySfx(Shoot);
         Lure.Instance._isUsed = true;
         Vector3 direction = Target.transform.position - Lure.Instance.transform.position;
         Rigidbody _Rigidbody = Lure.Instance.GetComponent<Rigidbody>();
 
         _Rigidbody.AddForce(direction * Speed, ForceMode.Impulse);
+    }
+
+    public void Rotating()
+    {
+        TargetInteraction.GetComponent<Interaction>().SetSpin();
     }
 }
