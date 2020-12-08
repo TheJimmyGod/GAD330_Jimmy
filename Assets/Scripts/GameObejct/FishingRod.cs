@@ -31,21 +31,6 @@ public class FishingRod : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var avatar = VRAvatar.Active;
-        var lure = Lure.Instance;
 
-        if (avatar == null)
-            return;
-
-        if (lure == null)
-            return;
-
-        if(lure._isUsed == false && lure.Captured == false)
-        {
-            Rod.transform.LookAt(new Vector3(avatar.LookForward.x, avatar.LookForward.y + 0.1f, avatar.LookForward.z));
-            float step = 1.1f * Time.deltaTime;
-            Vector3 dir = Vector3.RotateTowards(transform.forward, (this.transform.position - lure.transform.position), step, 0.0f);
-            transform.rotation = Quaternion.LookRotation(dir);
-        }
     }
 }
