@@ -33,7 +33,7 @@ Transform:
   m_LocalPosition: {x: 5, y: 5, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
-  - {fileID: 3810815334967648870}
+  - {fileID: 4976885035931262287}
   - {fileID: 9129943650043689897}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -45,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1665267669093006830}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: fce0ecff534816b49af71ef31033c259, type: 3}
 --- !u!23 &1665267669093006801
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -94,7 +94,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 3, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1665267669093006805
 MonoBehaviour:
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Avatar: {fileID: 0}
   Spawner: {fileID: 0}
-  Effect: {fileID: 3810815334967648892}
+  Effect: {fileID: 4976885035931262284}
   capture: {fileID: 8300000, guid: f140b222bd2538743a7c25f68a95e661, type: 3}
   reel: {fileID: 8300000, guid: 53ed1d84b4792c04d981e99c7a657a87, type: 3}
   OnClick:
@@ -223,13 +223,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40319b68e79fafa46b68fbca099ba234, type: 3}
---- !u!1 &3810815334967648892 stripped
+--- !u!1 &4976885035931262284 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8211133908444020575, guid: 40319b68e79fafa46b68fbca099ba234,
     type: 3}
   m_PrefabInstance: {fileID: 3810815334967648787}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &3810815334967648870 stripped
+--- !u!4 &4976885035931262287 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8211133908444020572, guid: 40319b68e79fafa46b68fbca099ba234,
     type: 3}

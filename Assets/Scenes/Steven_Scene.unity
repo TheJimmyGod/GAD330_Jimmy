@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.016398275, g: 0.019799886, b: 0.053369448, a: 1}
+  m_IndirectSpecularColor: {r: 0.015335435, g: 0.019686883, b: 0.05290968, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -227,7 +227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1058802629
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -504,6 +504,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 929424336612881, guid: b9aab6b6f73a8da429e139af4afcd1c0, type: 3}
+      propertyPath: Shoot
+      value: 
+      objectReference: {fileID: 8300000, guid: 9dca7e5bf3466fe40af8e088d6f86186, type: 3}
     - target: {fileID: 929424336612880, guid: b9aab6b6f73a8da429e139af4afcd1c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -548,10 +552,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 929424336612881, guid: b9aab6b6f73a8da429e139af4afcd1c0, type: 3}
-      propertyPath: Shoot
-      value: 
-      objectReference: {fileID: 8300000, guid: 9dca7e5bf3466fe40af8e088d6f86186, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9aab6b6f73a8da429e139af4afcd1c0, type: 3}
 --- !u!33 &137492282691716395
@@ -988,7 +988,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128121359507547838}
   m_LocalRotation: {x: -0.86053526, y: -0.45910174, z: -0.21991134, w: -0.0185387}
-  m_LocalPosition: {x: 0.26274538, y: -2.3218315, z: 20.883814}
+  m_LocalPosition: {x: 0.94, y: -1.19, z: 21.4}
   m_LocalScale: {x: 394.62, y: 394.62, z: 394.62}
   m_Children: []
   m_Father: {fileID: 8631366247259076109}
@@ -1013,6 +1013,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[ExperienceApp]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832731203098635954, guid: 76b1a11244f87634098bfdbb3891091c,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832731203098635954, guid: 76b1a11244f87634098bfdbb3891091c,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 54068.594
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832731203098635954, guid: 76b1a11244f87634098bfdbb3891091c,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 8.81e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832731203098635954, guid: 76b1a11244f87634098bfdbb3891091c,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 54018.844
       objectReference: {fileID: 0}
     - target: {fileID: 2832731203678497401, guid: 76b1a11244f87634098bfdbb3891091c,
         type: 3}
@@ -1072,32 +1092,12 @@ PrefabInstance:
     - target: {fileID: 2832731203678497383, guid: 76b1a11244f87634098bfdbb3891091c,
         type: 3}
       propertyPath: EditorType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2832731203678497383, guid: 76b1a11244f87634098bfdbb3891091c,
         type: 3}
       propertyPath: BuildType
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832731203098635954, guid: 76b1a11244f87634098bfdbb3891091c,
-        type: 3}
-      propertyPath: m_BoundingSphereOverride.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832731203098635954, guid: 76b1a11244f87634098bfdbb3891091c,
-        type: 3}
-      propertyPath: m_BoundingSphereOverride.y
-      value: 54068.594
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832731203098635954, guid: 76b1a11244f87634098bfdbb3891091c,
-        type: 3}
-      propertyPath: m_BoundingSphereOverride.z
-      value: 8.81e-43
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832731203098635954, guid: 76b1a11244f87634098bfdbb3891091c,
-        type: 3}
-      propertyPath: m_BoundingSphereOverride.w
-      value: 54018.844
       objectReference: {fileID: 0}
     - target: {fileID: 2832731202627597427, guid: 76b1a11244f87634098bfdbb3891091c,
         type: 3}
@@ -1223,6 +1223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0.3009832
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076657823401002168, guid: 76b1a11244f87634098bfdbb3891091c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.823
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76b1a11244f87634098bfdbb3891091c, type: 3}
