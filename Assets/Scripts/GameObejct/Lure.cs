@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Liminal.SDK.VR.Avatars;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,6 @@ public class Lure : MonoBehaviour
     public static Lure Instance { get { return _instance; } }
 
     private GameObject Avatar;
-    private GameObject CapturedFish;
 
     private float _Speed = 5.0f;
     private Rigidbody _Rigidbody;
@@ -42,9 +42,21 @@ public class Lure : MonoBehaviour
 
     void Update()
     {
+        var collider = transform.GetComponent<Collider>();
+        GameObject EndofLine = FishingRod.Instance.Reset.gameObject;
+
+        if(GameManager.Instance.Target == null)
+        {
+            transform.position = new Vector3(EndofLine.gameObject.transform.position.x,
+    EndofLine.gameObject.transform.position.y,
+    EndofLine.gameObject.transform.position.z);
+            transform.LookAt(Vector3.forward);
+            _Rigidbody.velocity = Vector3.zero;
+        }
+
         if(_isUsed)
         {
-
+            collider.enabled = true;
             _CurrentTimer += Time.deltaTime;
             if(_CurrentTimer >= _Availabletimer)
             {
@@ -68,13 +80,18 @@ public class Lure : MonoBehaviour
                 if (Vector3.Distance(Avatar.transform.position, transform.position) < 2.0f)
                 {
                     Captured = false;
-                    _Rigidbody.velocity = Vector3.zero;
-                    GameObject EndofLine = FishingRod.Instance.line.transform.Find("Reset").gameObject;
                     transform.position = new Vector3(EndofLine.gameObject.transform.position.x, 
                         EndofLine.gameObject.transform.position.y, 
                         EndofLine.gameObject.transform.position.z);
                     transform.LookAt(Vector3.forward);
+                    _Rigidbody.velocity = Vector3.zero;
+
                 }
+            }
+            else
+            {
+                collider.enabled = false;
+                _Rigidbody.velocity = Vector3.zero;
             }
         }
 
@@ -88,8 +105,10 @@ public class Lure : MonoBehaviour
 
     public void Reel()
     {
-        Vector3 direction = Avatar.transform.position - transform.position;
-        _Rigidbody.AddForce(direction * 1.0f, ForceMode.Impulse);
+        Vector3 direction = new Vector3(Avatar.transform.position.x - transform.position.x,
+            transform.position.y
+            , Avatar.transform.position.z - transform.position.z);
+        _Rigidbody.AddForce(direction * 0.5f, ForceMode.Impulse);
         _isUsed = false;
     }
 }

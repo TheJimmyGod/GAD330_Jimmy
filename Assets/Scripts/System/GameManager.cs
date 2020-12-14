@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     public void ShootLure()
     {
+        if (Lure.Instance._isUsed)
+            return;
         AudioManager.Instance.PlaySfx(Shoot);
         Lure.Instance._isUsed = true;
         Vector3 direction = Target.transform.position - Lure.Instance.transform.position;

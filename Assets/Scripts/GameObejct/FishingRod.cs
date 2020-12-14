@@ -15,7 +15,7 @@ public class FishingRod : MonoBehaviour
     public static FishingRod Instance { get { return _instance; } }
 
     public GameObject Rod;
-    public GameObject line;
+    public GameObject Reset;
 
     public Lure lure;
 
@@ -31,6 +31,6 @@ public class FishingRod : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }
