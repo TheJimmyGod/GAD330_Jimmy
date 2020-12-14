@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.015335435, g: 0.019686883, b: 0.05290968, a: 1}
+  m_IndirectSpecularColor: {r: 0.016398275, g: 0.019799886, b: 0.053369448, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1022,17 +1022,17 @@ PrefabInstance:
     - target: {fileID: 2832731203098635954, guid: 76b1a11244f87634098bfdbb3891091c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 54068.594
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2832731203098635954, guid: 76b1a11244f87634098bfdbb3891091c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 8.81e-43
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2832731203098635954, guid: 76b1a11244f87634098bfdbb3891091c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 54018.844
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2832731203678497401, guid: 76b1a11244f87634098bfdbb3891091c,
         type: 3}
@@ -1228,6 +1228,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.823
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832731203012619180, guid: 76b1a11244f87634098bfdbb3891091c,
+        type: 3}
+      propertyPath: m_HideReticleWhenInvalid
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76b1a11244f87634098bfdbb3891091c, type: 3}
@@ -1791,6 +1796,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2414396538804614101, guid: 159c30eff0791c44796174a1d97f6bae,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1c2ca8d97ced55d46a7c2f526defd421, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 159c30eff0791c44796174a1d97f6bae, type: 3}
 --- !u!23 &7235464759039928696

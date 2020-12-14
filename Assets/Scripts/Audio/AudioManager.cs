@@ -24,9 +24,14 @@ public class AudioManager : MonoBehaviour
         musicSource.loop = true;
     }
 
-    public void FadeOutMusic()
+    public void FadeOutMusic(float time)
     {
-        StartCoroutine(BeginFadeOut(2.0f));
+        StartCoroutine(BeginFadeOut(time));
+    }
+
+    public void FadeInMusic(float time)
+    {
+        StartCoroutine(BeginFadeIn(time));
     }
 
     public void PlaySfx(AudioClip clip, float volume = 1.0f)
@@ -50,6 +55,17 @@ public class AudioManager : MonoBehaviour
         audioMixer.TransitionToSnapshots(new AudioMixerSnapshot[] { defaultSS },
                                      new float[] { 1.0f },
                                      duration);
+    }
+
+    private IEnumerator BeginFadeIn(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        var muteMusicSS = audioMixer.FindSnapshot("MuteMusic");
+        audioMixer.TransitionToSnapshots(new AudioMixerSnapshot[] { muteMusicSS },
+                                            new float[] { 1.0f },
+                                            duration);
+
     }
 
     public void SetMasterVolume(float vol)
