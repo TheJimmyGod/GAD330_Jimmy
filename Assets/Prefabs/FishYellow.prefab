@@ -112,8 +112,8 @@ MonoBehaviour:
   Spawner: {fileID: 0}
   Effect: {fileID: 4976885035931262284}
   Effect2: {fileID: 9129943650043689898}
-  capture: {fileID: 8300000, guid: f140b222bd2538743a7c25f68a95e661, type: 3}
-  reel: {fileID: 8300000, guid: 53ed1d84b4792c04d981e99c7a657a87, type: 3}
+  capture: {fileID: 0}
+  reel: {fileID: 8300000, guid: 8d7903d904134ea4aabfc2f06a983ed6, type: 3}
   OnClick:
     m_PersistentCalls:
       m_Calls: []
